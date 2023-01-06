@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55883475565760f4782de27a148dd4f5, type: 3}
+  m_Name: Sepatu 1
+  m_EditorClassIdentifier: 
+  name: Sepatu
+  subsname: High heels
+  itemicon: {fileID: 21300000, guid: 8cd708a787aa31f46851a4f3eff8173e, type: 3}
+  isstackable: 1
+  hargarestock: 10
+  hargajual: 16
+  index: 0
