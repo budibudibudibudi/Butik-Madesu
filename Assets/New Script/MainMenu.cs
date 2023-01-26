@@ -9,9 +9,18 @@ public class MainMenu : MonoBehaviour
     public GameObject [] panel;
     public void Playgame()
     {
+        int save = 0;
+        PlayerPrefs.SetInt("New Game", save);
         SceneManager.LoadScene("game1");
+
     }
 
+    public void loadgame()
+    {
+        int save = 1;
+        PlayerPrefs.SetInt("New Game", save);
+        SceneManager.LoadScene("game1");
+    }
     public void mainmenupanel(int index)
     {
         panel[indexer].SetActive(false);

@@ -13,7 +13,6 @@ public class restockmanager : MonoBehaviour
     public GameObject slotholder;
     public GameObject [] slots;
     public GameObject [] prevbtn;
-    int temp;
 
 
     public void OnEnable()

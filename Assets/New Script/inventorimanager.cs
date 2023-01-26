@@ -5,17 +5,27 @@ using UnityEngine.UI;
 
 public class inventorimanager : MonoBehaviour
 {
-    public itemclass itemtoadd;
-    public itemclass removeitem;
     public slotclass [] misc;
 
     public slotclass[] startingitem;
     public GameObject slotholder;
     public GameObject [] slots;
 
+    public void kosongan()
+    {
+        slots = new GameObject[slotholder.transform.childCount];
+        misc = new slotclass[slots.Length];
+
+        for (int i = 0; i < misc.Length; i++)
+            misc[i] = new slotclass();
+        for (int i = 0; i < slotholder.transform.childCount; i++)
+            slots[i] = slotholder.transform.GetChild(i).gameObject;
 
 
-    public void Awake()
+        refreshUI();
+
+    }
+    public void starter()
     {
         slots = new GameObject[slotholder.transform.childCount];
         misc = new slotclass[slots.Length];

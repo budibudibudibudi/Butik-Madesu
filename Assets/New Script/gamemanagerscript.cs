@@ -25,15 +25,41 @@ public class gamemanagerscript : MonoBehaviour
     public int pendapatanhariini = 0;
     public int day = 1;
 
+
+    public inventorimanager[] inven = new inventorimanager[5];
+
+    public static gamemanagerscript instance;
+
     private void Awake() {
-        hari.SetActive(true);
+
+        if (instance == null)
+            instance = this;
+    }
+    private void Start()
+    {
+        bool gameStart = PlayerPrefs.GetInt("New Game") == 0 ? true : false;
+        if(gameStart)
+        {
+            foreach (var item in inven)
+            {
+                item.starter();
+            }
+        }
+        else
+        {
+            foreach (var item in inven)
+            {
+                item.kosongan();
+            }
+            dataManager.instance.loaddata();
+        }
         daytext.text = day.ToString();
-        
+        hari.SetActive(true);
     }
     // Update is called once per frame
     void Update()
     {
-        if(Quest.isactive)
+        if (Quest.isactive)
         {
             butik.SetActive(true);
             game.SetActive(false);
@@ -44,6 +70,7 @@ public class gamemanagerscript : MonoBehaviour
             butik.SetActive(false);
             game.SetActive(true);
         }
+        
     }
 
     public void nextday()
@@ -82,8 +109,12 @@ public class gamemanagerscript : MonoBehaviour
         }
     }
 
-    public void kerestok()
+    public void save()
     {
-        
+        dataManager.instance.SaveData(inven[0].misc, inven[1].misc, inven[2].misc, inven[3].misc, inven[4].misc, day, uangdidompet);
+    }
+    public void load()
+    {
+        dataManager.instance.loaddata();
     }
 }
