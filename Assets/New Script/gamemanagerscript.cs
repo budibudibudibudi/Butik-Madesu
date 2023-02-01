@@ -12,6 +12,7 @@ public class gamemanagerscript : MonoBehaviour
     public GameObject kertaspengingat;
     public GameObject hari;
     public GameObject resultpanel;
+    public GameObject savepanel;
 
     public quest Quest;
 
@@ -85,12 +86,7 @@ public class gamemanagerscript : MonoBehaviour
 
     public void continueday()
     {
-        resultpanel.SetActive(false);
-        if(day == 5||day == 8||day == 11)
-        {
-            FindObjectOfType<spawnplayer>().maxspawn++;
-        }
-        FindObjectOfType<spawnplayer>().Awake();
+        StartCoroutine(save());
     }
 
     public void pengingat(bool isopen)
@@ -109,12 +105,27 @@ public class gamemanagerscript : MonoBehaviour
         }
     }
 
-    public void save()
+     IEnumerator save()
     {
+        savepanel.SetActive(true);
         dataManager.instance.SaveData(inven[0].misc, inven[1].misc, inven[2].misc, inven[3].misc, inven[4].misc, day, uangdidompet);
+        yield return new WaitForSeconds(3);
+        savepanel.SetActive(false);
+        resultpanel.SetActive(false);
+        if (day == 5 || day == 8 || day == 11)
+        {
+            FindObjectOfType<spawnplayer>().maxspawn++;
+        }
+        FindObjectOfType<spawnplayer>().endgame = false;
+        FindObjectOfType<spawnplayer>().Awake();
     }
     public void load()
     {
         dataManager.instance.loaddata();
+    }
+
+    public void kerestok()
+    {
+        restock.SetActive(true);
     }
 }
