@@ -46,10 +46,6 @@ public class inventorimanager : MonoBehaviour
         //removeitem = misc[0].getitem();
         //remove(removeitem);
     }
-
-    private void OnEnable() {
-    }
-
     public void refreshUI()
     {
         for (int i = 0;i<slots.Length;i++)
